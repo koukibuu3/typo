@@ -10,7 +10,8 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx .",
-    "prettier": "prettier --write src/**/*"
+    "prettier": "prettier --write src/**/*",
+    "prepare": "simple-git-hooks > /dev/null"
   },
   "author": {
     "name": "koukibuu3",
@@ -86,10 +87,24 @@
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.25.4",
     "fork-ts-checker-webpack-plugin": "^6.0.1",
+    "lint-staged": "^12.3.4",
     "node-loader": "^2.0.0",
     "prettier": "^2.5.1",
+    "simple-git-hooks": "^2.7.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
     "typescript": "~4.5.5"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write --loglevel=error",
+      "eslint --fix --quiet"
+    ],
+    "src/**/*.{css,scss,sass,html,gql,graphql,json}": [
+      "prettier --write --loglevel=error"
+    ]
   }
 }
