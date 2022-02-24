@@ -10,6 +10,11 @@ body {
   /* padding: 2rem; */
 }
 
+.draggable {
+  -webkit-app-region: drag;
+  cursor: move;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background: #333;
